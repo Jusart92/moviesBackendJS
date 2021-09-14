@@ -4,13 +4,9 @@ const app = express();
 
 const { config } = require('./config/index');
 
-app.get('/', function (req, res) {
-  res.send('helloWorld');
-});
+const moviesApi = require('./routes/movies');
 
-app.get('/json', function (req, res) {
-  res.json({ hello: 'world' });
-});
+moviesApi(app);
 
 app.listen(config.port, function () {
   console.log(`Listenig http://localhost:${config.port}`);
