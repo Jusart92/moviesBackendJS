@@ -21,7 +21,7 @@ function moviesApi(app) {
     }
   });
 
-  router.get('/:movieID', async function (req, res, next) {
+  router.get('/:movieId', async function (req, res, next) {
     const { movieId } = req.params;
     try {
       const movies = await moviesService.getMovie({ movieId });
@@ -69,6 +69,7 @@ function moviesApi(app) {
 
   router.delete('/:movieId', async function (req, res, next) {
     const { movieId } = req.params;
+
     try {
       const deletedMovieId = await moviesService.deleteMovie({ movieId });
 
@@ -76,8 +77,8 @@ function moviesApi(app) {
         data: deletedMovieId,
         message: 'movie deleted',
       });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   });
 }
