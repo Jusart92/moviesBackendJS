@@ -11,7 +11,6 @@ function moviesApi(app) {
     const { tags } = req.query;
     try {
       const movies = await moviesService.getMovies({ tags });
-
       res.status(200).json({
         data: movies,
         message: 'movies listed',
